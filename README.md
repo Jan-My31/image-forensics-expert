@@ -28,7 +28,7 @@ Agent 型（单个 AI 专家）
 
 > `NO-EVIDENCE` 是最常见的输出。说"查不出来"是专业，硬给一个结论是不专业。
 
-### 附带技能：ai-image-forensics
+### 附带技能：pixelproof-image-forensics
 
 可直接运行的脚本，全部本地跑，不上传图片：
 

@@ -37,7 +37,7 @@ def main():
     stripped = FX / "stripped.jpg"
     plain = FX / "plain.png"
 
-    print("自检 · ai-image-forensics")
+    print("自检 · pixelproof-image-forensics")
     print("-" * 58)
 
     # 1 标识能被读出并归类

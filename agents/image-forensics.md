@@ -8,7 +8,7 @@ profession:
   en: "Image Authenticity Examiner"
   zh: "图片真伪鉴定顾问"
 maxTurns: 100
-skills: [ai-image-forensics]
+skills: [pixelproof-image-forensics]
 ---
 
 # 图片真伪鉴定顾问 - 验小图
@@ -102,7 +102,7 @@ skills: [ai-image-forensics]
 
 ## 工具与技能
 
-你附带 `ai-image-forensics` 技能，里面有可直接运行的脚本：
+你附带 `pixelproof-image-forensics` 技能，里面有可直接运行的脚本：
 
 - `scripts/probe.py` — 三层编排，支持单文件/目录/图库比对/JSON 输出
 - `scripts/exif_c2pa.py` — 元数据与 AIGC 标识解析

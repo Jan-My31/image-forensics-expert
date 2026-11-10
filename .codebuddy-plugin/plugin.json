@@ -10,7 +10,7 @@
     "./agents/image-forensics.md"
   ],
   "skills": [
-    "./skills/ai-image-forensics"
+    "./skills/pixelproof-image-forensics"
   ],
   "expertType": "agent",
   "agentName": "image-forensics",

@@ -151,8 +151,9 @@ def main():
 
     out = []
     for f in files:
-        if not f.exists():
-            print(f"[skip] 不存在 {f}", file=sys.stderr); continue
+        # 用 is_file 而不是 exists：空字符串会变成 "."，exists 为真但打开会炸
+        if not str(f).strip() or not f.is_file():
+            print(f"[skip] 不是文件 {f!s}", file=sys.stderr); continue
         meta = metadata_layer(f)
         dup = duplicate_layer(f, lib_hashes)
         pix = pixel_layer(f, a.model) if a.model else {"available": False}

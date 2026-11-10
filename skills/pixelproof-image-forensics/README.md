@@ -272,7 +272,7 @@ python3 tests/selftest.py
 ```
 
 ```
-自检 · ai-image-forensics
+自检 · pixelproof-image-forensics
 ----------------------------------------------------------
   [PASS] 带 AIGC 标识的 PNG 判为 AI-SIGNED — 实际 AI-SIGNED
   [PASS] Label 解析为 1 — 字段 1
@@ -359,10 +359,10 @@ GitHub 打包的 tarball 下载不完整。`gzip -t` 验证一下，重新下。
 
 ```bash
 # A. WorkBuddy 用户级 skills 目录
-git clone https://github.com/Jan-My31/ai-image-forensics.git ~/.workbuddy/skills/ai-image-forensics
+git clone https://github.com/Jan-My31/ai-image-forensics.git ~/.workbuddy/skills/pixelproof-image-forensics
 
 # B. 某个项目的 .workbuddy/skills/ 下，团队共用
-git clone https://github.com/Jan-My31/ai-image-forensics.git <项目>/.workbuddy/skills/ai-image-forensics
+git clone https://github.com/Jan-My31/ai-image-forensics.git <项目>/.workbuddy/skills/pixelproof-image-forensics
 ```
 
 不用 git 也可以：仓库页面右上角 Code → Download ZIP，解压后放进同一个路径。

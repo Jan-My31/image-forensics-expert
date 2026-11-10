@@ -1,7 +1,11 @@
 ---
-name: ai-image-forensics
-description: 判断一张图片是 AI 生成、P 过图，还是重复图。三层取证：元数据（AIGC 国标标识 / C2PA / EXIF）、感知哈希查重、可选像素模型。用于电商签收图审核、素材溯源、批量图片筛查等场景。When the user asks whether an image is AI-generated, photoshopped, duplicated, or needs image provenance/forensics evidence.
+name: pixelproof-image-forensics
+version: 1.0.1
+display_name: "图片真伪取证"
+display_name_en: "Image Forensics"
+description: "判断一张图片是 AI 生成、P 过图，还是重复图。三层取证：元数据（AIGC 国标标识 / C2PA / EXIF）、感知哈希查重、可选像素模型。用于电商签收图审核、素材溯源、批量图片筛查等场景。"
 description_zh: "三层取证判断图片是否 AI 生成、P 图或重复"
+description_en: "Decide whether an image is AI-generated, photoshopped, or a duplicate, in three cost-ordered layers: metadata (China's TC260 AIGC label, C2PA, EXIF), perceptual-hash duplicate search, and an optional ViT pixel classifier. Use it for e-commerce receipt review, asset provenance, and batch image screening. Triggers when the user asks whether a picture is AI-generated, edited, or reused, or needs forensics evidence."
 ---
 
 # AI 图片取证
@@ -72,7 +76,43 @@ python3 scripts/run_xai.py      人脸.jpg --weights /path/ff_attribution.ckpt
 | XAI-Deepfakes | 仓库 `model/checkpoint/ff_attribution.ckpt` | 70 MB |
 
 国内下载加镜像：`HF_ENDPOINT=https://hf-mirror.com`；大文件用 `aria2c -x16 -s16`。
+
+**别让用户自己拼下载命令**，有现成脚本（默认走 hf-mirror、aria2c 多线程、下完核体积和 SHA256）：
+
+```bash
+python3 scripts/fetch_weights.py --list           # 清单 + 当前状态
+python3 scripts/fetch_weights.py commfor384       # 87 MB，只跑像素层下这个就够
+python3 scripts/fetch_weights.py --all --jobs 16  # 四个全下，合计 2.2 GB
+python3 scripts/fetch_weights.py --all --check    # 只校验已有文件
+```
+
+脚本支持断点续传；被代理截断的文件会被体积 + SHA256 拦下来（本机真踩过：GitHub
+tarball 少了 70 MB 的 ckpt，解压才报 `failed finding central directory`）。
+下完落在 `models/<模型名>/`，正好是三个 `run_*.py` 的默认查找路径，不用再传 `--weights`。
+
 **下载不成就直说卡在哪一步**，不要用"理论上可以"替代实测结果。
+
+## 输出长什么样（照这个形状回答）
+
+`probe.py` 的真实输出，三种档位各一例：
+
+```text
+samples/ai/手机拍的快递驿站货架.png   ->   AI-SIGNED
+  理由：文件里有 AIGC 合规标识（Label=1），这是生成方的自证
+  元数据：aigc_label | 格式 PNG 1024x1536
+
+samples/variants/real01__p75.jpg   ->   DUPLICATE
+  理由：与 real01.jpg 的感知哈希距离 0，阈值 10
+  元数据：无正向标记 | 格式 JPEG 1280x853
+  重复：最近 real01.jpg 距离 0  ≤10 判重复
+
+samples/real/real02.jpg   ->   NO-EVIDENCE
+  理由：三层都没找到标识；这不等于真图，需要业务侧另找证据
+  元数据：无正向标记 | 格式 JPEG 4500x3000
+```
+
+向用户转述时：结论档位大写原样给，不要翻译成"疑似 AI"这类模糊说法；理由那行不要
+改写，它是判定的依据；`NO-EVIDENCE` 后面紧跟一句"不等于真图"，别让用户误会。
 
 ## 阈值速查
 
@@ -94,5 +134,5 @@ python3 scripts/run_xai.py      人脸.jpg --weights /path/ff_attribution.ckpt
 - `XAI-Deepfakes`：换脸（FaceForensics++）多分类器，只认人脸。喂快递签收照会让 10 张真图里 5 张被判成 Face2Face/DeepFakes/NeuralTextures。
 - `LAID`：架构很轻（ShuffleNet 0.34M 参数、CPU 20ms），但权重在 Google Drive，国内下不到。
 
-<!-- provenance: xiaotu/ai-image-forensics v1.0.1 · © 2026 ym · fp 7f3ac91d-2b64-4e08 · 见 COPYRIGHT.md -->
+<!-- provenance: xiaotu/pixelproof-image-forensics v1.0.1 · © 2026 ym · fp 7f3ac91d-2b64-4e08 · 见 COPYRIGHT.md -->
 

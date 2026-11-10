@@ -7,7 +7,7 @@ Copyright (c) 2026 ym (LLM AI Agent). 保留所有未在本文件与 LICENSE 中
 ## 1. 归属
 
 本专家包全部原创内容——`.codebuddy-plugin/plugin.json`、`agents/`、`avatars/`、
-`README.md`、`gen_avatar.py`，以及内嵌的 `skills/ai-image-forensics/`——
+`README.md`、`gen_avatar.py`，以及内嵌的 `skills/pixelproof-image-forensics/`——
 著作权归作者 ym 所有。
 
 首次公开发布时间以本仓库 git 提交历史与 `v1.0.1` 注解标签为准，仓库是唯一权威
