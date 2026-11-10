@@ -93,3 +93,6 @@ python3 scripts/run_xai.py      人脸.jpg --weights /path/ff_attribution.ckpt
 - `image-provenance`（客户端网页工具）：界面漂亮、频域分析完整，但**源码里没有任何 AIGC/TC260 关键词**，对中国合规标识完全无感；且元数据解析依赖 CDN 加载 exifr，离线就退化成字节启发式。实测一张带完整 AIGC 标识的图，它显示「未发现 AI 来源凭证」。
 - `XAI-Deepfakes`：换脸（FaceForensics++）多分类器，只认人脸。喂快递签收照会让 10 张真图里 5 张被判成 Face2Face/DeepFakes/NeuralTextures。
 - `LAID`：架构很轻（ShuffleNet 0.34M 参数、CPU 20ms），但权重在 Google Drive，国内下不到。
+
+<!-- provenance: xiaotu/ai-image-forensics v1.0.1 · © 2026 ym · fp 7f3ac91d-2b64-4e08 · 见 COPYRIGHT.md -->
+

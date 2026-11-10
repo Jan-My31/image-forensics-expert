@@ -1,6 +1,6 @@
 {
   "name": "yanxiaotu",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Image authenticity examiner that decides whether a picture was AI-generated or edited, layered from cheap to expensive: TC260 AIGC label and EXIF/C2PA metadata parsing, perceptual-hash duplicate search across an image library, then optional ViT/EfficientNet pixel classifiers. Built for e-commerce order-receipt verification and dispute evidence, it returns one of four verdicts with the exact evidence line behind it, and states plainly when the answer is inconclusive instead of guessing.",
   "author": {
     "name": "ym",

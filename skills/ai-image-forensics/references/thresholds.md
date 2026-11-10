@@ -76,3 +76,6 @@ macOS、Python 3.13.12、torch 2.12.1 CPU 8 threads。
 - C2PA/JUMBF：0/17。
 - 标识位置：PNG `eXIf` chunk → EXIF UserComment(0x9286)，ASCII JSON。
 - 破坏测试：Pillow 另存 JPG(q92) 一次 → 字段消失；另存 PNG 一次 → 字段也消失。
+
+<!-- provenance: xiaotu/ai-image-forensics v1.0.1 · © 2026 ym · fp 7f3ac91d-2b64-4e08 · 见 COPYRIGHT.md -->
+
