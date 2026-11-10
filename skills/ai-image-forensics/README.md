@@ -1,5 +1,8 @@
 # ai-image-forensics
 
+[![selftest](https://github.com/Jan-My31/ai-image-forensics/actions/workflows/selftest.yml/badge.svg)](https://github.com/Jan-My31/ai-image-forensics/actions/workflows/selftest.yml)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 判断一张图是 **AI 生成**、**P 过**，还是**重复图**。三层取证，一条命令，国内合规标识原生支持。
 
 不训练模型、不上传图片、不需要 GPU。
@@ -158,11 +161,13 @@ references/thresholds.md  所有阈值的来源与实测数字
 
 ```bash
 # A. 直接放进 WorkBuddy 的用户级 skills 目录
-git clone <this-repo> ~/.workbuddy/skills/ai-image-forensics
+git clone https://github.com/Jan-My31/ai-image-forensics.git ~/.workbuddy/skills/ai-image-forensics
 
 # B. 放进某个项目的 .workbuddy/skills/ 下，团队共用
-git clone <this-repo> <项目>/.workbuddy/skills/ai-image-forensics
+git clone https://github.com/Jan-My31/ai-image-forensics.git <项目>/.workbuddy/skills/ai-image-forensics
 ```
+
+不用 git 也可以：仓库页面右上角 Code → Download ZIP，解压后放进同一个路径。
 
 装着之后，agent 看到「这张图是不是 AI 生成的」这类问题时，会自动读 `SKILL.md`
 并按里面的流程调用 `probe.py`。
