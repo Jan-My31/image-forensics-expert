@@ -1,0 +1,64 @@
+{
+  "name": "yanxiaotu",
+  "version": "1.0.0",
+  "description": "Image authenticity examiner that decides whether a picture was AI-generated or edited, layered from cheap to expensive: TC260 AIGC label and EXIF/C2PA metadata parsing, perceptual-hash duplicate search across an image library, then optional ViT/EfficientNet pixel classifiers. Built for e-commerce order-receipt verification and dispute evidence, it returns one of four verdicts with the exact evidence line behind it, and states plainly when the answer is inconclusive instead of guessing.",
+  "author": {
+    "name": "ym",
+    "email": "llmaiagent@163.com"
+  },
+  "agents": [
+    "./agents/image-forensics.md"
+  ],
+  "skills": [
+    "./skills/ai-image-forensics"
+  ],
+  "expertType": "agent",
+  "agentName": "image-forensics",
+  "displayName": {
+    "en": "PixelProof",
+    "zh": "验小图"
+  },
+  "profession": {
+    "en": "Image Authenticity Examiner",
+    "zh": "图片真伪鉴定顾问"
+  },
+  "displayDescription": {
+    "en": "Verifies whether a screenshot or order-receipt photo is AI-generated, edited or reused: reads metadata and the Chinese AIGC label first, then checks duplicates, and only then runs a pixel model, returning evidence you can actually cite.",
+    "zh": "核验订单签收图与截图真伪：先读元数据与国标AIGC标识，再查图库重复，再跑像素模型，输出可举证结论。"
+  },
+  "avatar": "avatars/expert.png",
+  "categoryId": "11-SecurityCompliance",
+  "defaultInitPrompt": {
+    "zh": "帮我看看这张图是AI生成还是P的",
+    "en": "Is this image AI-generated or photoshopped?"
+  },
+  "plugin": "yanxiaotu",
+  "tags": [
+    {
+      "en": "Photo Forensics",
+      "zh": "图片真伪取证"
+    },
+    {
+      "en": "AIGC Provenance",
+      "zh": "AIGC标识核验"
+    },
+    {
+      "en": "Receipt Audit",
+      "zh": "签收图核验"
+    }
+  ],
+  "quickPrompts": [
+    {
+      "zh": "帮我看看这张图是AI生成还是P的",
+      "en": "Is this image AI-generated or photoshopped?"
+    },
+    {
+      "zh": "这批订单签收图里有没有重复上传或者盗用别人图的",
+      "en": "Do any of these order-receipt photos duplicate or steal another photo?"
+    },
+    {
+      "zh": "我要拿这张图去平台申诉，帮我把证据链和话术整理出来",
+      "en": "I need to dispute this with the platform - build me the evidence chain and the wording."
+    }
+  ]
+}

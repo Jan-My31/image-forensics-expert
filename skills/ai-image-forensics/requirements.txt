@@ -1,0 +1,12 @@
+# 前两层（元数据 + 查重）只需要这两个
+Pillow>=10.0
+numpy>=1.24
+
+# 像素层（可选）：probe.py --model / run_commfor.py / run_xai.py
+# torch>=2.0
+# torchvision>=0.15
+# timm>=1.0
+# safetensors
+
+# run_raiw.py 专用（权重 2.03 GB，不用就别装）
+# remove-ai-watermarks[source-classify]
